@@ -1,0 +1,24 @@
+const videoElement = document.querySelector("#video");
+const button = document.querySelector("#button");
+
+// Prompt to select media stream, pass to video element, then play the video
+
+async function selectMediaStream() {
+  try {
+    const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+    videoElement.srcObject = mediaStream;
+    videoElement.onloadedmetadata = () => videoElement.play();
+  } catch (error) {}
+}
+
+button.addEventListener("click", async () => {
+  // Disable the button
+  button.disabled = true;
+  // Start Picture in Picture
+  await videoElement.requestPictureInPicture();
+  // Reset the button
+  button.disabled = false;
+});
+
+// On load
+selectMediaStream();
