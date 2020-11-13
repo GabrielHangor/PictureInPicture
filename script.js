@@ -1,8 +1,7 @@
 const videoElement = document.querySelector("#video");
 const button = document.querySelector("#button");
 
-// Prompt to select media stream, pass to video element, then play the video
-
+// Prompt to select media stream and pass it to the video element using the mediaDevices Web API
 async function selectMediaStream() {
   try {
     const mediaStream = await navigator.mediaDevices.getDisplayMedia();
@@ -12,11 +11,8 @@ async function selectMediaStream() {
 }
 
 button.addEventListener("click", async () => {
-  // Disable the button
   button.disabled = true;
-  // Start Picture in Picture
   await videoElement.requestPictureInPicture();
-  // Reset the button
   button.disabled = false;
 });
 
