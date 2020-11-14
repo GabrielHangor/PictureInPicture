@@ -3,7 +3,7 @@ const button = document.querySelector("#button");
 const buttonStart = document.querySelector("#button-start");
 
 
-// Prompt to select media stream and pass it to the video element using the mediaDevices Web API
+// Prompt to select media stream source and pass it to the video element using the mediaDevices Web API
 button.addEventListener("click", async () => {
   try {
     const mediaStream = await navigator.mediaDevices.getDisplayMedia();
